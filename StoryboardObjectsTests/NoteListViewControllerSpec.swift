@@ -35,5 +35,14 @@ class NotesListViewControllerSpec: QuickSpec {
             XCTAssertNotNil(sut.tableView.dataSource)
             XCTAssertTrue(sut.tableView.dataSource is NotesListDataProvider)
         }
+        
+        it("should set delegate in viewDidLoad") {
+            XCTAssertNotNil(sut.tableView.delegate)
+            XCTAssertTrue(sut.tableView.delegate is NotesListDataProvider)
+        }
+        
+        it("should set delegate and dataSource to be the same object") {
+            XCTAssertEqual(sut.tableView.dataSource as? NotesListDataProvider, sut.tableView.delegate as? NotesListDataProvider)
+        }
     }
 }
